@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" >
+<head>
+    <title>User</title>
+</head>
+<body>
+<form th:text="${user.getId()}" />
+<br/>
+<form th:text="${user.getFirstName()}" />
+<br/>
+<form th:text="${user.getSecondName()}" />
+<br/>
+<form th:text="${user.getNickname()}" />
+<br/>
+<form th:text="${user.getEmail()}" />
+<br/>
+<form th:each="role : ${user.getRoles()}" th:text="${role.name}" />
+
+<form action="/logout">
+    <input type="submit" value="logout">
+</form>
+
+
+</body>
+</html>

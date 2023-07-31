@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Show</title>
+</head>
+<body>
+
+<form th:text="${user.getId()}"></form>
+<form th:text="${user.getFirstName()}"></form>
+<form th:text="${user.getSecondName()}"></form>
+<form th:text="${user.getNickname()}"></form>
+<form th:text="${user.getEmail()}"></form>
+<form th:each="role : ${user.getRoles()}" th:text="${role.name}"></form>
+
+
+<a th:href="@{/admin/{id}/update(id=${user.getId()})}">Edit</a>
+
+<form action="/admin/user/">
+  <input type="submit" value="admin">
+</form>
+<form action="/logout">
+  <input type="submit" value="logout">
+</form>
+
+</body>
+</html>

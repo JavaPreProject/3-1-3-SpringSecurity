@@ -32,8 +32,8 @@ public class Initialization {
         Set<Role> userSet = Stream.of(userTest).collect(Collectors.toSet());
         Set<Role> adminSet = Stream.of(adminTest).collect(Collectors.toSet());
 
-        User user = new User("Maksim", "Maksim", "MaksimAdmin", "myEmail@myemail.com", "12345", userSet);
-        User admin = new User("Ivan", "Jovanovich", "JovanovichUser", "youEmail@youemail.com", "12345", adminSet);
+        User user = new User("NoName", "NoName", "admin", "myEmail@myemail.com", "admin", userSet);
+        User admin = new User("NoName", "NoName", "user", "youEmail@youemail.com", "user", adminSet);
         usersService.save(user);
         usersService.save(admin);
     }

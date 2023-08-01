@@ -15,9 +15,6 @@ import javax.validation.Valid;
 public class AdminController {
     private final RoleService rolesServiceImp;
     private final UserService usersServiceImp;
-    //private final NewUserValidator newUserValidator;
-
-
 
     @Autowired
     public AdminController(RoleService roleService, UserService userService) {

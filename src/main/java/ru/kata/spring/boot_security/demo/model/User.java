@@ -33,7 +33,7 @@ public class User {
     private String nickname;
 
     @Column(name = "email")
-    @Email(message = "неправильный формат электронной почты")
+    @Email(message = "не правильный формат e-mail")
     private String email;
 
     @Column(name = "password")

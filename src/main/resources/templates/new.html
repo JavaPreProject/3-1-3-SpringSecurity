@@ -8,28 +8,31 @@
 
 <form th:method="POST" th:action="@{/admin/user}" th:object="${user}">
   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-  <label for="firstName">Введите имя: </label>
+  <label for="firstName">Input name</label>
   <input type="text" th:field="*{firstName}" id="firstName"/>
-  <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+  <div style="color : #FFA07A" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name error</div>
 
   <br/>
 
-  <label for="secondName">Введите фамилию: </label>
+  <label for="secondName">Input second name</label>
   <input type="text" th:field="*{secondName}" id="secondName"/>
+  <div style="color : #FFA07A" th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}">Name error</div>
 
   <br/>
 
-  <label for="nickname">Введите никнейм: </label>
+  <label for="nickname">Input nickName </label>
   <input type="text" th:field="*{nickname}" id="nickname"/>
 
+
   <br/>
 
-  <label for="email">Введите Email: </label>
+  <label for="email">Input Email: </label>
   <input type="text" th:field="*{email}" id="email"/>
+  <div style="color : #FFA07A" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>
 
   <br/>
 
-  <label for="password">Введите пароль: </label>
+  <label for="password">Input Password</label>
   <input type="text" th:field="*{password}" id="password"/>
   <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
 

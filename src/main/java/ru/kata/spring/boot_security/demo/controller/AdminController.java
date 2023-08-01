@@ -4,29 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.User;
-import ru.kata.spring.boot_security.demo.service.RoleServiceImp;
-import ru.kata.spring.boot_security.demo.service.UserServiceImp;
-import ru.kata.spring.boot_security.demo.util.NewUserValidator;
+import ru.kata.spring.boot_security.demo.service.RoleService;
+import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.validation.Valid;
 
-
 @Controller
 public class AdminController {
-    private final RoleServiceImp rolesServiceImp;
-    private final UserServiceImp usersServiceImp;
-    private final NewUserValidator newUserValidator;
+    private final RoleService rolesServiceImp;
+    private final UserService usersServiceImp;
+    //private final NewUserValidator newUserValidator;
 
 
 
     @Autowired
-    public AdminController(RoleServiceImp roleService, UserServiceImp userService, NewUserValidator newUserValidator) {
+    public AdminController(RoleService roleService, UserService userService) {
         this.rolesServiceImp = roleService;
         this.usersServiceImp = userService;
-        this.newUserValidator = newUserValidator;
     }
 
     @GetMapping("/admin/user")
@@ -50,7 +46,7 @@ public class AdminController {
 
     @PostMapping("/admin/user")
     public String create(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-        newUserValidator.validate(user, bindingResult);
+       // newUserValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors()) {
             return "new";
         }
@@ -78,5 +74,20 @@ public class AdminController {
     public String delete(@PathVariable("id") int id) {
         usersServiceImp.delete(id);
         return "redirect:user";
+    }
+    @GetMapping("/user")
+    public String showUserInfo(Model model) {
+        User user = usersServiceImp.findOne();
+        model.addAttribute("user", user);
+        return "user";
+    }
+    @GetMapping("/")
+    private String showWelcomePage() {
+        return "welcome";
+    }
+
+    @GetMapping("/login")
+    public String getAuthenticated() {
+        return "login";
     }
 }

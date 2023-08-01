@@ -18,12 +18,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImp implements UserDetailsService {
+public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
-    public UserServiceImp(UserRepository userRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
         //this.passwordEncoder = passwordEncoder;
     }

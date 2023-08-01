@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Set;
 
 @Component
-public class RoleServiceImp{
+public class RoleService {
     private final RoleRepository roleRepository;
 
     @Autowired
-    public RoleServiceImp(RoleRepository roleRepository) {
+    public RoleService(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
 

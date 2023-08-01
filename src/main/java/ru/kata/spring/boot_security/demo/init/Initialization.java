@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.repositories.RoleRepository;
-import ru.kata.spring.boot_security.demo.service.UserServiceImp;
+import ru.kata.spring.boot_security.demo.service.UserService;
 
 import javax.annotation.PostConstruct;
 import java.util.Set;
@@ -15,10 +15,10 @@ import java.util.stream.Stream;
 @Component
 public class Initialization {
     private final RoleRepository roleRepository;
-    private final UserServiceImp usersService;
+    private final UserService usersService;
 
     @Autowired
-    public Initialization(RoleRepository roleRepository, UserServiceImp usersService) {
+    public Initialization(RoleRepository roleRepository, UserService usersService) {
         this.roleRepository = roleRepository;
         this.usersService = usersService;
     }
@@ -32,8 +32,8 @@ public class Initialization {
         Set<Role> userSet = Stream.of(userTest).collect(Collectors.toSet());
         Set<Role> adminSet = Stream.of(adminTest).collect(Collectors.toSet());
 
-        User user = new User("1", "1", "1", "1", "1111", userSet);
-        User admin = new User("2", "2", "2", "2", "test", adminSet);
+        User user = new User("Maksim", "Maksim", "MaksimAdmin", "myEmail@myemail.com", "12345", userSet);
+        User admin = new User("Ivan", "Jovanovich", "JovanovichUser", "youEmail@youemail.com", "12345", adminSet);
         usersService.save(user);
         usersService.save(admin);
     }

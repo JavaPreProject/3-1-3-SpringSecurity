@@ -1,6 +1,10 @@
 package ru.kata.spring.boot_security.demo.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -15,15 +19,21 @@ public class User {
     private int id;
 
     @Column(name = "first_name")
+    @NotBlank(message = "Имя не может быть пустым")
+    @Size(min = 2, max = 30, message = "field must contain from 2 to 30")
+    @Pattern(regexp = "^[a-zA-Zа-яА-Я]+$", message = "Имя может содержать только буквы")
     private String firstName;
 
     @Column(name = "second_name")
+    @NotBlank(message = "Фамилия не может быть пустой")
+    @Pattern(regexp = "^[a-zA-Zа-яА-Я]+$", message = "Фамилия может содержать только буквы")
     private String secondName;
 
     @Column(name = "nickname")
     private String nickname;
 
     @Column(name = "email")
+    @Email(message = "неправильный формат электронной почты")
     private String email;
 
     @Column(name = "password")

@@ -23,6 +23,7 @@
 
   <label for="nickname">Input nickName </label>
   <input type="text" th:field="*{nickname}" id="nickname"/>
+  <div style="color : #FFA07A" th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">Nick name error</div>
 
 
   <br/>
